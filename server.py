@@ -4,19 +4,19 @@ from bs4 import BeautifulSoup
 import pandas as pd
 from groq import Groq
 
-# Initialize the Groq client
+# initialize the Groq client
 client = Groq(
     api_key="ENTER YOUR KEY",
 )
 
-# Headers for web scraping
+# headers for web scraping
 headers_common = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:128.0) Gecko/20100101 Firefox/128.0",
     "Accept-Encoding": "gzip, deflate, br",
     "Accept-Language": "en-US,en;q=0.5",
 }
 
-# Sequoia Capital payload
+# sequoia Capital payload
 payload_sequoia = {
     "meta": {"size": 100},
     "board": {"id": "sequoia-capital", "isParent": True},
@@ -70,7 +70,7 @@ def scrape_sequoia_jobs():
     else:
         print(f"Failed to fetch Sequoia Capital jobs. Status code: {response.status_code}")
 
-    # Save data to CSV
+    # save data to CSV
     csv_file = "SequoiaJobs.csv"
     with open(csv_file, mode="w", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=["Company", "Job", "Details", "Link"])
@@ -128,7 +128,7 @@ def scrape_yc_jobs():
     else:
         print(f"Failed to fetch Y Combinator jobs. Status code: {response.status_code}")
 
-    # Save data to CSV
+    # save data to CSV
     csv_file = "YCJobs.csv"
     with open(csv_file, mode="w", newline="") as file:
         writer = csv.DictWriter(file, fieldnames=["Company", "Job", "Details", "Experience", "Link"])
